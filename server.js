@@ -55,7 +55,7 @@ app.get('/products/new', (req, res) => {
 
 //Delete
 app.delete('/products/:id', (req, res) => {
-    Product.findByIdAndRemove(req.params.id, (err, date) => {
+    Product.findByIdAndRemove(req.params.id, (err, data) => {
         res.redirect("/products")
     })
 })
