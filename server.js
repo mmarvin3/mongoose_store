@@ -24,15 +24,16 @@ db.on('disconnected', () => console.log('mongo disconnected'));
 // MIDDLEWARE & BODY PARSER
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
+app.use(express.static('public'))
 
 // SEED DATA
 const productsSeed = require('./models/productsSeed.js');
 app.get('/products/seed', (req, res) => {
-	Product.deleteMany({}, (error, allProducts) => {});
+    Product.deleteMany({}, (error, allProducts) => { });
 
-	Product.create(productsSeed, (error, data) => {
-		res.redirect('/products');
-	});
+    Product.create(productsSeed, (error, data) => {
+        res.redirect('/products');
+    });
 });
 
 
@@ -44,7 +45,7 @@ app.get('/products', (req, res) => {
             products: allProducts
         })
     })
-    
+
 })
 
 //New
@@ -52,7 +53,43 @@ app.get('/products/new', (req, res) => {
     res.render('new.ejs');
 })
 
+//Delete
+app.delete('/products/:id', (req, res) => {
+    Product.findByIdAndRemove(req.params.id, (err, date) => {
+        res.redirect("/products")
+    })
+})
 
+//Update
+app.put("/products/:id", (req, res) => {
+    Product.findByIdAndUpdate(
+        req.params.id,
+        req.body,
+        {
+            new: true,
+        },
+        (error, updatedProduct) => {
+            res.redirect(`/products/${req.params.id}`)
+        }
+    )
+})
+
+//Create
+app.post('/products', (req, res) => {
+    Product.create(req.body, (error, createdProduct) => {
+        console.log(Product)
+        res.redirect('/products')
+    })
+})
+
+//Edit
+app.get('/products/:id/edit', (req, res) => {
+    Product.findById(req.params.id, (error, foundProduct) => {
+        res.render("edit.ejs", {
+            product: foundProduct,
+        })
+    })
+})
 
 //Show
 app.get('/products/:id', (req, res) => {

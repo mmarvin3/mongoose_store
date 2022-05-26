@@ -1,23 +1,27 @@
-
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Products Index Page</title>
-	</head>
-	<body>
-		<h1>Products List</h1>
-        <a href="/products/new">Add New Product</a>
-        <ul>
-			<% products.forEach(product => { %>
-			<li>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Products Index Page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="container">
+    <h1 class="header">Products List</h1>
+    <a href="/products/new">Add New Product</a>
+    <ul class="product-list">
+        <% products.forEach(product=> { %>
+            <li>
                 <%=product.name; %>
-            </li>
-            <li><a href="/products/<%=product._id%>"><img src="<%=product.img%>" alt=""></a></li>
-            <li><%=product.price;%></li>
-			<% }) %>
-		</ul>
-	</body>
+                    </br>
+                    <a href="/products/<%=product._id%>"><img src="<%=product.img%>" alt=""></a></br>
+                    $<%=product.price;%>
+            </li></br>
+            <% }) %>
+    </ul>
+</body>
+
 </html>
