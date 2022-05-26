@@ -16,7 +16,17 @@
     <form action="/products/<%=product._id%>?_method=DELETE" method="POST">
         <input type="submit" value="DELETE">
     </form>
-    <p>Quantity: <%= product.qty%></p>
-    <button>BUY</button>
+    <p>Price: $<%=product.price%></p>
+    <p>Description: <%= product.description%></p>
+    Quantity: <% if(product.qty <= 0) {%>
+        <p>Out of stock</p>
+        <%}else{%>
+            <%=product.qty%>
+            <% }%>
+        
+    <form action="/products/<%=product._id%>/buy" method="POST">
+        <input type="submit" value="buy">
+    </form>
+    
 </body>
 </html>

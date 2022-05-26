@@ -82,6 +82,20 @@ app.post('/products', (req, res) => {
     })
 })
 
+app.post('/products/:id/buy', (req, res) => {
+    Product.findById(req.params.id, (err,data) => {
+        if (data.qty <= 0) {
+        
+        }
+        else{
+            data.qty--;
+            data.save();
+        }
+
+        res.redirect(`/products/${data.id}`);
+    })
+})
+
 //Edit
 app.get('/products/:id/edit', (req, res) => {
     Product.findById(req.params.id, (error, foundProduct) => {
@@ -107,3 +121,4 @@ const PORT = process.env.PORT;
 app.listen(PORT, () => {
     console.log(`The server is listening on port: ${PORT}`)
 })
+
