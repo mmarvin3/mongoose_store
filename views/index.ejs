@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Products Index Page</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/style.css">
 </head>
 
 <body class="container">
@@ -14,8 +14,8 @@
     <a href="/products/new">Add New Product</a>
     <ul class="product-list">
         <% products.forEach(product=> { %>
-            <li>
-                <%=product.name; %>
+            <li class="product">
+                <a href="/products/<%=product._id%>"><%=product.name; %></a>
                     </br>
                     <a href="/products/<%=product._id%>"><img src="<%=product.img%>" alt=""></a></br>
                     $<%=product.price;%>

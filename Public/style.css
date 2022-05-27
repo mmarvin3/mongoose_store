@@ -1,5 +1,12 @@
 .container {
     background-color: rgb(25, 111, 176);
+    color: white;
+    
+}
+
+.product{
+    padding: 5px;
+    border: 2px solid white;
     
 }
 
@@ -8,6 +15,7 @@
     display: flex;
     flex-direction: wrap;
     align-items: center;
+    justify-content: space-evenly;
 }
 
 .header {

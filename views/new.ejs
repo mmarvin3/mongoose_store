@@ -6,13 +6,16 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>New Products</title>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="/style.css">
 	</head>
     
 	<body class="container">
 		<h1>New Product Page</h1>
+        <a href="/products">Back to the index page</a></br>
 		<form action="/products" method="POST">
 			Name: <input type="text" name="name" /><br />
+            Image: <input type="text" name="img" /><br />
+            Description: <input type="text" name="description"/><br />
 			Price: <input type="text" name="price" /><br />
 			
 			<input type="submit" name="" value="Add Product" />

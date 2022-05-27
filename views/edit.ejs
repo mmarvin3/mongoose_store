@@ -5,10 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mongoose Store - Edit Product</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body class="container">
     <h1 >Edit Product Page</h1>
+    <a href="/products">Back to the index page</a></br>
     <form action="/products/<%=product._id%>?_method=PUT" method="POST">
         Name: <input type="text" name="name" value="<%=product.name%>"/><br/>
         Price: <input type="number" name="price" value="<%=product.price%>"/><br/>
